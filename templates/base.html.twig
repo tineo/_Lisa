@@ -1,12 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html  class="h-100">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Cesar Gutierrez Tineo">
+    <meta name="generator" content="Symfony 4.2">
+        <title>{% block title %}BS4!{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        
+        
+
+        <body class="d-flex flex-column h-100">
+    <header>
+  <!-- Fixed navbar -->
+  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Intranet</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ path('app_homepage') }}">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_factura') }}">Facturas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Reportes</a>
+        </li>
+      </ul>
+      {#<form class="form-inline mt-2 mt-md-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>#}
+
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Usuario: {{ app.user.username }}
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="{{ path('app_logout') }}">Cerrar sesion</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  {% endif %}  
+
+</header>
+
+<!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+  <div class="container">
+    {% block body %}{% endblock %}
+  </div>
+</main>
+
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <span class="text-muted"> &copy; {{ "now"|date("Y") }} Intranet</span>
+  </div>
+</footer>
+    
+    {% block javascripts %}
+     {{ encore_entry_script_tags('app') }}
+    {% endblock %}
     </body>
 </html>
+
+

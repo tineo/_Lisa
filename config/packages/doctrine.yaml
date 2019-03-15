@@ -18,7 +18,7 @@ doctrine:
         #url: '%env(resolve:DATABASE_URL)%'
         default_connection: intranet
         connections:
-            default:
+            crm:
                 # configure these for your database server
                 url: '%env(DATABASE_URL)%'
                 driver: 'pdo_mysql'
@@ -49,21 +49,21 @@ doctrine:
         #        alias: App
         default_entity_manager: intranet
         entity_managers:
-            default:
-                connection: default
-                mappings:
-                    Crm:
-                        is_bundle: false
-                        type: annotation
-                        dir: '%kernel.project_dir%/src/Entity'
-                        prefix: 'App\Entity'
-                        alias: CRM
             intranet:
                 connection: intranet
                 mappings:
-                    Intranet:
+                    intranet:
                         is_bundle: false
                         type: annotation
                         dir: '%kernel.project_dir%/src/Entity'
                         prefix: 'App\Entity'
-                        alias: INTRANET
+                        alias: intranet
+            crm:
+                connection: crm
+                mappings:
+                    crm:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity'
+                        prefix: 'App\Entity'
+                        alias: crm

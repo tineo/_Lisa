@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TesoDocs
  *
- * @ORM\Table(name="____teso_docs")
+ * @ORM\Table(name="teso_docs")
  * @ORM\Entity
  */
 class TesoDocs
