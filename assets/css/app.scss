@@ -1,0 +1,33 @@
+// assets/css/global.scss
+
+// customize some Bootstrap variables
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+$primary: darken(#428bca, 20%);
+$font-size-base: 14;
+$font-family-base: 'Ubuntu', sans-serif;
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+main > .container {
+    padding: 60px 15px 0;
+  }
+  
+  .footer {
+    background-color: #f5f5f5;
+  }
+  
+  .footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  code {
+    font-size: 80%;
+  }
+  
