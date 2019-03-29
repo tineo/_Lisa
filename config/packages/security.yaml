@@ -1,15 +1,22 @@
 security:
+    #encoders:
+    #   App\Entity\User:
+    #       algorithm: argon2i
     encoders:
-        App\Entity\User:
-            algorithm: argon2i
-
+      App\Entity\Usuarios:
+        id: 'App\Security\Encoder\MyCustomPasswordEncoder'
+      #algorithm: bcrypt
+      #App\Entity\Usuarios:
+        #id: 'App\Security\Encoder\MyCustomPasswordEncoder'
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: App\Entity\User
-                property: username
+                #class: App\Entity\User
+                class: App\Entity\Usuarios
+                #property: username
+                property: usuario
                 manager_name: intranet
     firewalls:
         dev:
@@ -40,5 +47,6 @@ security:
          - { path: ^/admin, roles: ROLE_USER }
          - { path: ^/facturas, roles: ROLE_USER }
          - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         #- { path: ^/login, allow_if: "is_anonymous() and !is_authenticated()"
          - { path: ^/, roles: ROLE_USER }
         
