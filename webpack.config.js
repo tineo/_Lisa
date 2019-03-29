@@ -52,8 +52,8 @@ Encore
     //.autoProvidejQuery()
 
     // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
-    //.addEntry('admin', './assets/js/admin.js')
+    .enableReactPreset()
+    .addEntry('facturas', './assets/js/facturas.js')
 ;
 
 module.exports = Encore.getWebpackConfig();

@@ -3,18 +3,46 @@
 {% block title %}Hello FacturaController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
+<div id="root"></div>
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="table-responsive-sm">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/tineo/lisa/src/Controller/FacturaController.php'|file_link(0) }}">src/Controller/FacturaController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/tineo/lisa/templates/factura/index.html.twig'|file_link(0) }}">templates/factura/index.html.twig</a></code></li>
-    </ul>
+        <table class="table table-sm table-dark">
+                <thead>
+                <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Anulada</th>
+                        <th scope="col">F.Emision</th>
+                        <th scope="col">F.Recep</th>
+                        <th scope="col">F.Cobranza</th>
+                        <th scope="col">Monto USD$</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for factura in facturas %}
+                <tr>
+                        <th scope="row">1</th>
+                        <td>{{ factura.numero }}</td>
+                        <td>{{ factura.name }}</td>
+                        <td>{{ factura.status }}</td>
+                        <td>{{ factura.anulada }}</td>
+                        <td>{{ factura.fechaEmision?factura.fechaEmision|date('d/m/Y') }}</td>
+                        <td>{{ factura.fechaRecepcion?factura.fechaRecepcion|date('d/m/Y') }}</td>
+                        <td>{{ factura.fechaCobranza?factura.fechaCobranza|date('d/m/Y') }}</td>
+                        <td class="text-right">{{ (factura.moneda is same as('S')? factura.monto / factura.tipoDeCambio : factura.monto) |number_format(2, '.', ',')}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+        </table>
+        </div>
+
 </div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{{ encore_entry_script_tags('facturas') }}
 {% endblock %}

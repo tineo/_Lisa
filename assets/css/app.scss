@@ -3,11 +3,10 @@
 // customize some Bootstrap variables
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 $primary: darken(#428bca, 20%);
-$font-size-base: 14;
+$font-size-base: 12;
 $font-family-base: 'Ubuntu', sans-serif;
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
-
 
 
 /* Custom page CSS
